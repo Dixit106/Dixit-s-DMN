@@ -1,3 +1,18 @@
+@font-face {
+    font-family: helicopter;
+    src: url(Bring\ Me\ A\ Helicopter!.otf);
+}
+
+@font-face {
+    font-family: cowboy;
+    src: url(Bleeding_Cowboys.ttf);
+}
+
+@font-face {
+    font-family: googlefont;
+    src: url(BitcountPropSingle-VariableFont_CRSV\,ELSH\,ELXP\,slnt\,wght.ttf);
+}
+
 body {
     background-image: url(pdj50168.gif);
     background-repeat: repeat;
@@ -10,16 +25,20 @@ body {
     background-image: url(SB014.JPG);
     color: black;
     padding: 20px;
-    border: 2px solid cadetblue;
+    border: 6px dashed red;
     min-height: 400px;
+    font-family: googlefont;
+    border-radius: 10px;
 }
 
 .sidebar {
     background-image: url(animated-background-image-1517.gif);
     padding: 15px;
-    border: 2px solid cadetblue;
+    border: 5px groove purple;
     width: 110px;
     color: rebeccapurple;
+    font-family: cowboy;
+    border-radius: 10px;
 }
 
 .sidebar ul {
@@ -30,9 +49,14 @@ body {
 .sidebar a {
     color: black;
     text-decoration: none;
+    font-family: googlefont;
 }
 
 .layout {
     display: flex;
     gap: 50px;
+}
+
+h2 {
+    font-family: helicopter;
 }
