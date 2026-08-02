@@ -1,0 +1,24 @@
+.main-content{
+    background-color: darkgray;
+    color: white;
+    padding: 20px;
+    border: 2px solid cadetblue;
+    min-height: 400px;
+}
+
+.sidebar {
+    background-color: yellowgreen;
+    padding: 15px;
+    border: 2px solid cadetblue;
+    width: 100px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0%;
+}
+
+.sidebar a {
+    color: lightgoldenrodyellow;
+    text-decoration: none;
+}
