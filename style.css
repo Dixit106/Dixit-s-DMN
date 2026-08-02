@@ -1,16 +1,25 @@
+body {
+    background-image: url(pdj50168.gif);
+    background-repeat: repeat;
+    color: yellow;
+    margin: 0;
+    padding: 10px;
+}
+
 .main-content{
-    background-color: darkgray;
-    color: white;
+    background-image: url(SB014.JPG);
+    color: black;
     padding: 20px;
     border: 2px solid cadetblue;
     min-height: 400px;
 }
 
 .sidebar {
-    background-color: yellowgreen;
+    background-image: url(animated-background-image-1517.gif);
     padding: 15px;
     border: 2px solid cadetblue;
-    width: 100px;
+    width: 110px;
+    color: rebeccapurple;
 }
 
 .sidebar ul {
@@ -19,6 +28,11 @@
 }
 
 .sidebar a {
-    color: lightgoldenrodyellow;
+    color: black;
     text-decoration: none;
+}
+
+.layout {
+    display: flex;
+    gap: 50px;
 }
