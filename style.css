@@ -19,6 +19,11 @@ body {
     color: yellow;
     margin: 0;
     padding: 10px;
+    cursor: url('greeny_normal.cur'), auto;
+}
+
+a {
+    cursor: url('greeny_alternate.cur'), pointer;
 }
 
 .smug-frieren {
