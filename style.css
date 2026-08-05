@@ -44,6 +44,7 @@ a {
     font-family: googlefont;
     border-radius: 10px;
     width: 100%;
+    z-index: 10;
 }
 
 .sidebar {
@@ -55,6 +56,7 @@ a {
     display: flex;
     flex-direction: column;
     transform: rotate(-3deg);
+    z-index: 10;
 }
 
 .sidebar-title {
@@ -125,4 +127,26 @@ h2 {
     margin-bottom: -15px;
     height: auto;
     z-index: 1000;
+}
+
+.earth-gif {
+    position: absolute;
+    top: 14%;
+    left: 7%;
+    transform: translateY(-50%);
+    z-index: 1;
+    pointer-events: none;
+    height: auto;
+    width: 150px;
+    
+}
+
+canvas {
+    z-index: 9999 !important;
+    pointer-events: none !important;
+}
+
+.header-title {
+    position: relative;
+    z-index: 11;
 }
