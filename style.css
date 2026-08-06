@@ -149,4 +149,15 @@ canvas {
 .header-title {
     position: relative;
     z-index: 11;
+    display: flex;
+    gap: 35px;
+}
+
+.profile-logo {
+    height: 50px;
+    width: auto;
+    border: 3px solid yellow;
+    border-radius: 50px;
+    margin-left: 20px;
+
 }
