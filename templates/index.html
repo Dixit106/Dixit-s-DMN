@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dixit's DMN</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    
+    <header class="header-title">
+        <img src="{{ url_for('static', filename='SSpfp.png') }}" alt="github-pfp" class="profile-logo">
+        <h2>DIXIT'S DEFAULT MODE NETWORK</h2> 
+        <div class="blinkies">  
+        <img src="{{ url_for('static', filename='penguins.gif') }}" alt="linuxgif" class="blinkie">
+        <img src="{{ url_for('static', filename='besteyes3.gif') }}" alt="eyesgif" class="blinkie">
+        <img src="{{ url_for('static', filename='onepiece-blinkie.gif') }}" alt="onepiecegif" class="onepiece-gif">
+        </div>   
+    </header>
+
+    <img src="{{ url_for('static', filename='reverseearth.gif') }}" alt="earthgif" class="earth-gif">
+
+    <div class="layout">
+        <div class="sidebar">
+            <h4 class="sidebar-title">Pipe-Line</h4>
+            <nav>
+            <ul>
+                <li>
+                    <img src="{{ url_for('static', filename='valhousehome.gif') }}" alt="homegif" class="nav-icon-1">
+                    <a href="/templates/index.html" style="margin-left: 5px;">Home</a>
+                </li>
+                
+                <li>
+                    <img src="{{ url_for('static', filename='writersscroll.gif') }}" alt="diarygif" class="nav-icon-2">
+                    <a href="/templates/diary.html">DMN Diary</a>
+                </li>
+                
+                <li>
+                    <img src="{{ url_for('static', filename='chibi_vegita.gif') }}" alt="aboutmegif" class="nav-icon-3">
+                    <a href="/templates/about.html">About Me</a>
+                </li>
+            </ul>
+        </nav>  
+        <img src="{{ url_for('static', filename='gear5luffy.png') }}" alt="Luffy" class="floating-luffy">
+        </div>
+    
+
+    <div class="main-content">
+    <h1>Default Mode Network</h1>
+    <h4>DMN is the area of your brain which is responsable for this image and 
+        thoughts of yourself you have in you.
+    </h4>
+    <p>This is the main content box here we will have most reading
+        and watching part of this site.
+    </p>
+    </div>
+
+      </div>  
+      <img src="{{ url_for('static', filename='smug_frieren.png') }}" alt="frieren" class="smug-frieren">
+      <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
+</body>
+</html>
