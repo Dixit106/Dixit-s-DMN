@@ -161,3 +161,22 @@ canvas {
     margin-left: 20px;
 
 }
+
+.blinkie {
+    margin-left: 20px;
+    height: 40px;
+    width: 90px;
+}
+
+.onepiece-gif {
+    margin-left: 20px;
+    height: 39px;
+    width: 89px;
+    border: 2px groove black;
+}
+
+.blinkies {
+    margin-left: 500px;
+    display: flex;
+    align-items: center;
+}
