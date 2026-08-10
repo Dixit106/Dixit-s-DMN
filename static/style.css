@@ -180,3 +180,15 @@ canvas {
     display: flex;
     align-items: center;
 }
+
+.center-gif {
+    height: 55px;
+    width: auto;
+    margin-right: 30px;
+}
+
+.pica-gif {
+    height: 50px;
+    width: auto;
+    margin-right: 30px;
+}
