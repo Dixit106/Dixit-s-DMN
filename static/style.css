@@ -20,6 +20,8 @@ body {
     margin: 0;
     padding: 10px;
     cursor: url('Steel\ Arrowhead.cur'), auto;
+    height: 100vh;
+    overflow: hidden;
 }
 
 a {
@@ -45,6 +47,9 @@ a {
     border-radius: 10px;
     width: 100%;
     z-index: 10;
+    max-height: 75vh;
+    overflow-y: scroll;
+    
 }
 
 .sidebar {
