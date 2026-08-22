@@ -17,5 +17,15 @@ def diary():
 def about():
     return render_template('about.html')
 
+#The eye page
+@app.route('/eye')
+def eye():
+    return render_template('eye.html')
+
+#The mail
+@app.route('/mail')
+def mail():
+    return render_template('mail.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
