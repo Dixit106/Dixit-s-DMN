@@ -106,6 +106,7 @@ a {
     flex-shrink: 0;
     margin-left: 40px;
     transition: transform 0.3s ease-in-out;
+
 }
 
 .nav-icon-2 {
@@ -114,7 +115,6 @@ a {
     flex-shrink: 0;
     margin-left: 10px;
     transition: transform 0.3s ease-in-out;
-
 }
 
 .nav-icon-3 {
@@ -123,7 +123,6 @@ a {
     flex-shrink: 0;
     margin-left: -20px;
     transition: transform 0.3s ease-in-out;
-
 }
 
 .layout {
@@ -215,6 +214,30 @@ canvas {
     gap: 35px;
 }
 
-. .github-link :hover {
+.github-link :hover {
     opacity: 0.8;
 }
+
+
+.mobile-warning{
+    display: none;
+}
+
+@media (max-width:768px) {
+    .layout, .header-title, .floating-luffy, .earth-gif {
+        display: none !important;
+}
+
+.mobile-warning {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #0000aa;
+    color: white;
+    font-family: googlefont, monospace;
+    text-align: center;
+    padding: 20px;
+    z-index: 9999;
+} }
