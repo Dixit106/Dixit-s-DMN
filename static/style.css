@@ -1,0 +1,220 @@
+@font-face {
+    font-family: helicopter;
+    src: url(Bring\ Me\ A\ Helicopter!.otf);
+}
+
+@font-face {
+    font-family: cowboy;
+    src: url(Bleeding_Cowboys.ttf);
+}
+
+@font-face {
+    font-family: googlefont;
+    src: url(BitcountPropSingle-VariableFont_CRSV\,ELSH\,ELXP\,slnt\,wght.ttf);
+}
+
+body {
+    background-image: url(pdj50168.gif);
+    background-repeat: repeat;
+    color: yellow;
+    margin: 0;
+    padding: 10px;
+    cursor: url('Steel\ Arrowhead.cur'), auto;
+    height: 100vh;
+    overflow: hidden;
+}
+
+a {
+    cursor: url('Steel\ Arrowhead\ Alt.\ Select.cur'), pointer;
+}
+
+.smug-frieren {
+    width: auto;
+    height: 300px;
+    position: absolute;
+    bottom: 5px;
+    right: -80px;
+    z-index: 1000;
+}
+
+.main-content{
+    background-image: url(SB014.JPG);
+    background-attachment: local;
+    color: black;
+    padding: 20px;
+    border: 6px dashed red;
+    min-height: 495px;
+    font-family: googlefont;
+    border-radius: 10px;
+    width: 100%;
+    z-index: 10;
+    max-height: 75vh;
+    overflow-y: scroll;
+    
+}
+
+.sidebar {
+    background-image: url(animated-background-image-1517.gif);
+    padding: 15px;
+    border: 5px groove purple;
+    width: 110px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    transform: rotate(-3deg);
+    z-index: 10;
+}
+
+.sidebar-title {
+    color: rebeccapurple;
+    font-family: cowboy;
+    font-size: 21px;
+    margin-top: 0px;
+    text-align: center;
+    margin-bottom: -3px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0%;
+    margin-top: 0px;
+}
+
+.sidebar a {
+    color: rebeccapurple;
+    text-decoration: none;
+    font-family: googlefont;
+}
+
+.sidebar a:hover img {
+    transform: rotate(15deg) scale(1.1);
+}
+
+.sidebar li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 5px;
+    margin-bottom: 30px;
+    transform: rotate(6deg);
+}
+
+.nav-icon-1 {
+    width: 77px;
+    height: auto;
+    flex-shrink: 0;
+    margin-left: 40px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-icon-2 {
+    width: 57px;
+    height: auto;
+    flex-shrink: 0;
+    margin-left: 10px;
+    transition: transform 0.3s ease-in-out;
+
+}
+
+.nav-icon-3 {
+    width: 40px;
+    height: auto;
+    flex-shrink: 0;
+    margin-left: -20px;
+    transition: transform 0.3s ease-in-out;
+
+}
+
+.layout {
+    display: flex;
+    gap: 50px;
+}
+
+h2 {
+    font-family: helicopter;
+}
+
+.floating-luffy {
+    margin-top: auto;
+    width: calc(100% + 30px);
+    margin-left: -15px;
+    margin-bottom: -15px;
+    height: auto;
+    z-index: 1000;
+}
+
+.earth-gif {
+    position: absolute;
+    top: 14%;
+    left: 7%;
+    transform: translateY(-50%);
+    z-index: 1;
+    pointer-events: none;
+    height: auto;
+    width: 150px;
+    
+}
+
+canvas {
+    z-index: 9999 !important;
+    pointer-events: none !important;
+}
+
+.header-title {
+    position: relative;
+    z-index: 11;
+    display: flex;
+    gap: 35px;
+}
+
+.profile-logo {
+    height: 50px;
+    width: auto;
+    border: 3px solid #FFD700;
+    border-radius: 50px;
+    margin-left: 20px;
+
+}
+
+.blinkie {
+    margin-left: 20px;
+    height: 40px;
+    width: 90px;
+}
+
+.onepiece-gif {
+    margin-left: 20px;
+    height: 39px;
+    width: 89px;
+    border: 2px groove black;
+}
+
+.blinkies {
+    margin-left: 500px;
+    display: flex;
+    align-items: center;
+}
+
+.center-gif {
+    height: 55px;
+    width: auto;
+    margin-right: 30px;
+}
+
+.pica-gif {
+    height: 50px;
+    width: auto;
+    margin-right: 30px;
+}
+
+.github-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+. .github-link :hover {
+    opacity: 0.8;
+}
