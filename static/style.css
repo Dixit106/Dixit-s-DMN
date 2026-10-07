@@ -254,12 +254,35 @@ body.diary-body {
     align-items: center;
 }
 
+/*Diary.html css part....*/
+
 .window{
-    width: 600px;
+    width: 750px;
 }
 
 .diary-container {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.window-body {
+    background-color: rgba(225, 225, 225, 0.85) !important;
+    backdrop-filter: blur(3px);
+    padding: 20px !important;
+    min-height: 500px;
+}
+
+.diary-container h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 24px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.diary-container p{
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
 }
 
 /* OVERRIDEING HOMEPAGE STUFF*/
