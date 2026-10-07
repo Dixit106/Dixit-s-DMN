@@ -241,3 +241,19 @@ canvas {
     padding: 20px;
     z-index: 9999;
 } }
+
+body.diary-body {
+    background-image: url('/static/water2.webp');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.window-win7{
+    width: 600px;
+}
+
+.diary-container {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+}

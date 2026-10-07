@@ -4,10 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>diary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!--7.css framework for the win7 vibe let's see how it looks-->
+    <link rel="stylesheet" href="https://unpkg.com/7.css">
 </head>
-<body>
-    <h1>Hehe sori!</h1>
-    <img src="{{ url_for('static', filename='construction.gif') }}" alt="constructiongif" class="content-construction">
+<body class="diary-body">
+    <div class="diary-container">
+        <div class="window-win7">
+            <div class="title-bar-win7">
+                <div class="title-bar-text-win7">DMN Diary.exe</div>
+                <div class="title-bar-controls-win7">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+
+            <div class="window-body-win7">
+                <h3>Captain's Log: Date Unknown</h3>
+                <p>Welcome to the inner working of the Default Mode Network. This is where the thoughts echo...</p>
+                <hr>
+                <p>Today I was thinking about bla bla black sheep.... ajdfndfai nadj hadfih ahfdisfhe hadfieahfn dhaif...</p>
+
+                <button>Read More</button>
+            </div>
+        </div>
+    </div>
     
 </body>
 </html>
