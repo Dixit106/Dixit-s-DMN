@@ -244,16 +244,29 @@ canvas {
 
 body.diary-body {
     background-image: url('/static/water2.webp');
+    background-attachment: fixed;
+    background-position: center;
+    margin: 0;
+    min-height: 100vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.window-win7{
+.window{
     width: 600px;
 }
 
 .diary-container {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
+}
+
+/* OVERRIDEING HOMEPAGE STUFF*/
+.diary-container h3,
+.diary-container p,
+.diary-container div {
+    color: black !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    text-shadow: none !important;
 }
