@@ -285,6 +285,35 @@ body.diary-body {
     margin-bottom: 15px;
 }
 
+button.aero-btn{
+    background: linear-gradient(to bottom, #aee8fa 0%, #63b1e6 50%, #3e9bd5 51%, #288bce 100%);
+    border: 1px solid #1c649c;
+    border-radius: 20px;
+    color: white !important;
+    padding: 8px 25px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, sans-serif !important;
+
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4) !important;
+    box-shadow: inset 0 1px 2px rgba(225, 225, 225, 0.9), 0 4px 6px rgba(0, 0, 0, 0.2);
+
+    cursor: pointer;
+    transition: all 0.2 ease;
+    margin-top: 20px;
+}
+
+button.aero-btn:hover {
+    background: linear-gradient(to bottom, #c6f1ff 0%, #7bc2f0 50%, #56aae0 51%, #409ddb 100%);
+    box-shadow: inset 0 1px 3px rgba(225, 225, 225, 1), 0 4px 8px rgba(0,0,0,0.3);
+}
+
+button.aero-btn:active {
+    transform: translateY(2px);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2), 0 2px 3px rgba(0,0,0,0.2);
+}
+
+
 /* OVERRIDEING HOMEPAGE STUFF*/
 .diary-container h3,
 .diary-container p,
