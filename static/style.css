@@ -313,7 +313,7 @@ button.aero-btn:active {
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2), 0 2px 3px rgba(0,0,0,0.2);
 }
 
-.jelly-water {
+.aero-water-container {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -331,21 +331,25 @@ button.aero-btn:active {
     left: 0;
     width: 200%;
     height: 100%;
-    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,40 C150,60 350,0 600,40 C850,80 1050,20 1200,40 L1200,120 L0,120 Z" fill="rgba(80, 200, 220, 0.4)"/></svg>');
     background-size: 50% 100%;
 }
 
 /* Fist wave: greenish/bluish kinda and moves right to lft */
-.wave1 {
-    animation: moveWaves 15s linear infinite;
-    filter: drop-shadow(0 -5px 10px rgba(225, 225, 225, 0.3));
+.wave-back {
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,40 C150,60 350,0 600,40 C850,80 1050,20 1200,40 L1200,120 L0,120 Z" fill="rgba(0, 160, 255, 0.6)"/></svg>');
+    animation: moveWaves 12s linear infinite;
 }
 
 /* Second wave: kinda offset, moves fast, for overlapping jelly look */
-.wave2 {
-    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,40 C150,60 350,0 600,40 C850,80 1050,20 1200,40 L1200,120 L0,120 Z" fill="rgba(40, 150, 220, 0.4)"/></svg>');
-    background-size: 50% 100%;
-    animation: moveWaves 10s linear infinite reverse;
+.wave-mid {
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,40 C150,60 350,0 600,40 C850,80 1050,20 1200,40 L1200,120 L0,120 Z" fill="rgba(0, 240, 255, 0.4)"/></svg>');
+    animation: moveWaves 8s linear infinite reverse;
+}
+
+.wave-front {
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,40 C150,60 350,0 600,40 C850,80 1050,20 1200,40 L1200,120 L0,120 Z" fill="rgba(255, 255, 255, 0.25)"/></svg>');
+    animation: moveWaves 15s linear infinite;
+    filter: drop-shadow(0 -2px 5px rgba(225,225,225,0.8));
 }
 
 /* animation for the flowww.. */
@@ -354,6 +358,28 @@ button.aero-btn:active {
     100% {transform: translateX(-50%); }
 }
 
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    left: var(--left);
+    width: var(--size);
+    height: var(--size);
+
+    /* Fixed the periods and changed 225 to 255 for pure white glass */
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1) 60%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+
+    animation: floatUp var(--speed) ease-in infinite;
+    animation-delay: var(--delay);
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(1); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-35vh) scale(1.2); opacity: 0;}
+}
 
 /* OVERRIDEING HOMEPAGE STUFF*/
 .diary-container h3,
