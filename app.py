@@ -1,6 +1,22 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 app = Flask(__name__)
+
+#Database configuration
+#first we tell flask to create a file "diary.db" in my project folder
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///diary.db'
+db =SQLAlchemy(app)
+
+class DiaryEntry(db.Model):
+    id = db.Column(db.Integer, primary_key=True)# finally i can use my highschool study knowlege somewhere,(Primarykey= unique ID for every post)
+    title = db.Column(db.String(100), nullable=False)#title of my entry
+    content = db.Column(db.Text, nullable=False)#yapping
+    date_posted = db.Column(db.DateTime, default=datetime.utcnow)#for autosaving time
+
+    def __repr__(self):
+        return f"Entry('{self.title}','{self.date_posted}')"
 
 #The Home page
 @app.route('/')
@@ -26,6 +42,9 @@ def eye():
 @app.route('/mail')
 def mail():
     return render_template('mail.html')
+
+with app.app_context():
+    db.create_all()
 
 if __name__ == '__main__':
     app.run(debug=True)
