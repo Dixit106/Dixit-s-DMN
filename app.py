@@ -26,7 +26,11 @@ def home():
 #The diary page
 @app.route('/diary')
 def diary():
-    return render_template('diary.html')
+    # to get all entries from the database, ordered by newest date first
+    all_entries = DiaryEntry.query.order_by(DiaryEntry.date_posted.desc()).all()
+
+    #Send those entries to the HTML file so it can display them
+    return render_template('diary.html', entries=all_entries)
 
 #The about page
 @app.route('/about')
