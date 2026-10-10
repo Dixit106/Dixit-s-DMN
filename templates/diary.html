@@ -27,24 +27,36 @@
                 <ul class="tree-view">
                     <li>
                         <details open>
-                            <summary>October 2026</summary>
+                            <summary>All Entries</summary>
                             <ul>
-                                <li><a href="#">Oct 10: Building this Frutiger Aero site</a></li>
-                                <li><a href="#">Oct 05: What exactly is the DMN</a></li>
+                                <!--Flask Jinka loop start, it loops through every post in database-->
+                                {% for entry in entries %}
+                                <li>
+                                    <details>
+                                        <!--Title and Date-->
+                                        <summary>
+                                            {{ entry.title}} ({{ entry.date_posted.strftime('%b %d, %Y') }})
+                                        </summary>
+
+                                        <!--Content(Inside the file)-->
+                                        <ul>
+                                            <li>
+                                                <div style="padding: 10px; background: #fff; border: 1px solid #ccc; margin-top: 5px;">
+                                                    <p style="white-space: pre-wrap;">{{ entry.content }}</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </details>
+                                </li>
+
+                            <!--Flask JINJA loop end-->
+                            {% else %}
+                                <li>No entries found in the database.</li>
+                            {% endfor %}
+
                             </ul>
                         </details>
                     </li>
-
-                    <li>
-                        <details>
-                            <summary>September 2026</summary>
-                            <ul>
-                                <li><a href="#">Sep 28: Thoughts on One Piece</a></li>
-                                <li><a href="#">Sep 15: My favorite media right now</a></li>
-                            </ul>
-                        </details>
-                    </li>
-
                 </ul>
 
                 <br>
