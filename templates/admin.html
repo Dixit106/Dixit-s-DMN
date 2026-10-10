@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Terminal</title>
+    <!--Using 7.css even here hehe-->
+    <link rel="stylesheet" href="https://unpkg.com/7.css">
+    <style>
+        body {
+            background: #008080;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="window" style="width: 1000px;">
+        <div class="title-bar">
+            <div class="title-bar-text">DMN_Uploader.exe</div>
+        </div>
+
+        <div class="window-body">
+            <form action="/secret-admin" method="POST">
+
+                <div class="field-row-stacked">
+                    <label for="title">Log Title</label>
+                    <input type="title" name="title" type="text" required>
+                </div>
+
+                <div class="field-row-stacked" style="margin-top: 15px;">
+                    <label for="content">What's on your mind?</label>
+                    <textarea name="content" id="content" rows="10" required></textarea>
+                </div>
+
+                <button type="submit" style="margin-top: 15px;">Publish to Database</button>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>

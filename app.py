@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -42,6 +42,22 @@ def eye():
 @app.route('/mail')
 def mail():
     return render_template('mail.html')
+
+#Secret Admin Page(for me)
+@app.route('/secret-admin', methods=['GET', 'POST'])
+def admin():
+    if request.method == 'POST':
+        entry_title = request.form['title']
+        entry_content = request.form['content']
+
+        new_entry = DiaryEntry(title=entry_title, content=entry_content)
+
+        db.session.add(new_entry)
+        db.session.commit()
+
+        return redirect(url_for('diary'))
+
+    return render_template('admin.html')
 
 with app.app_context():
     db.create_all()
