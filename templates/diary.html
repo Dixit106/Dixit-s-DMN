@@ -8,6 +8,7 @@
 </head>
 <body class="diary-body">
     <img src="/static/frutiger_aero_avatar_png__by_caitlinpinkartist_dm9c4b4-pre.png" alt="Avatar" id="floating-avatar">
+    <img src="/static/bottle.gif" alt="Sticker" id="floating-bottle-sticker">
             <div class="aero-glass-panel">
                 <h3 style="color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.5)">DMN Logs & Entries</h3>
                 <p style="color: white;">Select a log file to read...</p>
@@ -51,63 +52,79 @@
    
 
 <script>
-    const avatar = document.getElementById('floating-avatar');
     const mainWindow = document.querySelector('.aero-glass-panel');
     const water = document.querySelector('.aero-water-container');
 
-    // Starting position will be top left corner
-    let x = 20;
-    let y = 20;
+    //reusable 'Blueprint' for anything we want to float!
+    class FloatingItem{
+        constructor(elementId, startX, startY, speedX, speedY) {
+            this.element = document.getElementById(elementId);
+            this.x = startX;
+            this.y = startY;
+            this.vx = speedX;
+            this.vy = speedY;
+        }
 
-    // Speeeed
-    let vx = 0.3;
-    let vy = 0.3;
+        move() {
+            if (!this.element) return;
 
-    function animateAvatar() {
-        // Get current sizes and positions of everything
-        const avRect = avatar.getBoundingClientRect();
-        const winRect = mainWindow.getBoundingClientRect();
-        const waterRect = water.getBoundingClientRect();
+            const rect = this.element.getBoundingClientRect();
+            const winRect = mainWindow.getBoundingClientRect();
+            const waterRect= water.getBoundingClientRect();
 
-        // Bounce off screen edges
-        if (avRect.left <= 0 && vx < 0) vx *= -1; // left wall
-        if (avRect.right >= window.innerWidth && vx > 0) vx *= -1; // right wall
-        if (avRect.top <= 0 && vy < 0) vy *= -1; // ceiling
+             // Bounce off screen edges
+        if (rect.left <= 0 && this.vx < 0) this.vx *= -1; // left wall
+        if (rect.right >= window.innerWidth && this.vx > 0) this.vx *= -1; // right wall
+        if (rect.top <= 0 && this.vy < 0) this.vy *= -1; // ceiling
 
-        // Bounce off the water
-        if (avRect.bottom >= waterRect.top && vy > 0) vy *= -1;
+         // Bounce off the water
+        if (rect.bottom >= waterRect.top && this.vy > 0) this.vy *= -1;
 
-        // Bounce off the diary window
-        if (avRect.right > winRect.left &&
-            avRect.left < winRect.right &&
-            avRect.bottom > winRect.top &&
-            avRect.top < winRect.bottom) {
+         // Bounce off the diary window
+        if (rect.right > winRect.left &&
+            rect.left < winRect.right &&
+            rect.bottom > winRect.top &&
+            rect.top < winRect.bottom) {
 
             // Figuring out which side it hit by seeing which overlap is smallest
-            const overlapLeft = avRect.right - winRect.left;
-            const overlapRight = winRect.right - avRect.left;
-            const overlapTop = avRect.bottom - winRect.top;
-            const overlapBottom = winRect.bottom - avRect.top;
+            const overlapLeft = rect.right - winRect.left;
+            const overlapRight = winRect.right - rect.left;
+            const overlapTop = rect.bottom - winRect.top;
+            const overlapBottom = winRect.bottom - rect.top;
 
             const minOverlap = Math.min(overlapLeft, overlapRight, overlapTop, overlapBottom);
 
             // Reverse the direction on the side it hit
-            if (minOverlap === overlapLeft && vx > 0) vx *= -1;
-            else if (minOverlap === overlapRight && vx < 0) vx *= -1;
-            else if (minOverlap === overlapTop && vy > 0) vy *= -1;
-            else if (minOverlap === overlapBottom && vy < 0) vy *= -1;
+            if (minOverlap === overlapLeft && this.vx > 0) this.vx *= -1;
+            else if (minOverlap === overlapRight && this.vx < 0) this.vx *= -1;
+            else if (minOverlap === overlapTop && this.vy > 0) this.vy *= -1;
+            else if (minOverlap === overlapBottom && this.vy < 0) this.vy *= -1;
         }
 
         // Apply the new postion
-        x += vx;
-        y += vy;
-        avatar.style.transform = `translate(${x}px, ${y}px)`;
-
-        // We need that 60fps
-        requestAnimationFrame(animateAvatar);
+        this.x += this.vx;
+        this.y += this.vy;
+        this.element.style.transform = `translate(${this.x}px, ${this.y}px)`;            
     }
-    
-    requestAnimationFrame(animateAvatar);
+}
+
+//('element id', startx, starty, speedx, speedy)
+
+//avatar
+const avatar = new FloatingItem('floating-avatar', 20,20,0.5,0.5);
+
+//bottle gif
+const sticker1 = new FloatingItem('floating-bottle-sticker', 20,20,0.4, -0.6);
+
+function animateAll() {
+    avatar.move();
+    sticker1.move();
+
+    requestAnimationFrame(animateAll);
+}
+
+// Start the engine!
+requestAnimationFrame(animateAll);
 </script>
 
 </body>
