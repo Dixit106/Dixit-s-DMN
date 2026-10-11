@@ -5,66 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>diary</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <!--7.css framework for the win7 vibe let's see how it looks-->
-    <link rel="stylesheet" href="https://unpkg.com/7.css">
 </head>
 <body class="diary-body">
     <img src="/static/frutiger_aero_avatar_png__by_caitlinpinkartist_dm9c4b4-pre.png" alt="Avatar" id="floating-avatar">
     <div class="diary-container">
-        <div class="window">
-            <div class="title-bar">
-                <div class="title-bar-text">DMN Diary.exe</div>
-                <div class="title-bar-controls">
-                    <button aria-label="Minimize"></button>
-                    <button aria-label="Maximize"></button>
-                    <button aria-label="Close"></button>
-                </div>
-            </div>
+        <div class="diary-container">
+            <div class="aero-glass-panel">
+                <h3 style="color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.5)">DMN Logs & Entries</h3>
+                <p style="color: white;">Select a log file to read...</p>
 
-            <div class="window-body">
-                <h3>DMN Logs & Entries</h3>
-                <p>Select a log file to read...</p>
+              <ul class="entry-list">
+                {% for entry in entries %}
+                <li>
+                    <details>
+                        <summary>{{ entry.title }} ({{ entry.date_posted.strftime('%b %d, %Y') }})</summary>
+                        <div class="entry-content">
+                            <p>{{ entry.content }}</p>
+                        </div>
+                    </details>
+                </li>
+            {% else %}
+                <li>No entries found in the database.</li>
+            {% endfor %}
+              </ul>
 
-                <ul class="tree-view">
-                    <li>
-                        <details open>
-                            <summary>All Entries</summary>
-                            <ul>
-                                <!--Flask Jinka loop start, it loops through every post in database-->
-                                {% for entry in entries %}
-                                <li>
-                                    <details>
-                                        <!--Title and Date-->
-                                        <summary>
-                                            {{ entry.title}} ({{ entry.date_posted.strftime('%b %d, %Y') }})
-                                        </summary>
+              <br>
+              <a href="/" style="text-decoration: none;">
+                <button class="aero-btn">Return to Home</button>
+              </a>
 
-                                        <!--Content(Inside the file)-->
-                                        <ul>
-                                            <li>
-                                                <div style="padding: 10px; background: #fff; border: 1px solid #ccc; margin-top: 5px;">
-                                                    <p style="white-space: pre-wrap;">{{ entry.content }}</p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </details>
-                                </li>
-
-                            <!--Flask JINJA loop end-->
-                            {% else %}
-                                <li>No entries found in the database.</li>
-                            {% endfor %}
-
-                            </ul>
-                        </details>
-                    </li>
-                </ul>
-
-                <br>
-                <a href="/" style="text-decoration: none;">
-                    <button class="aero-btn">Return to Home</button>
-                </a>
-            </div>
         </div>
     </div>
 
@@ -86,7 +55,7 @@
 
 <script>
     const avatar = document.getElementById('floating-avatar');
-    const mainWindow = document.querySelector('.window');
+    const mainWindow = document.querySelector('.aero-glass-panel');
     const water = document.querySelector('.aero-water-container');
 
     // Starting position will be top left corner

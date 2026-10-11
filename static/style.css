@@ -252,26 +252,32 @@ canvas {
     background-position: center center;
     margin: 0;
     min-height: 100vh;
-
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.window{
-    width: 750px;
+.aero-glass-panel{
+    width: 800px;
+    min-height: 500px;
+    padding: 30px;
+    background: rgba(225, 225, 225, 0.2);
+    backdrop-filter: blur(15px) saturate(150%);
+    -webkit-backdrop-filter: blur(15px) saturate(150%); /* for safari*/
+    border: 1px solid rgba(225, 225, 225, 0.6);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.entry-list {
+    list-style-type: none;
+    padding: 0;
 }
 
 .diary-container {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-.window-body {
-    background-color: rgba(225, 225, 225, 0.85) !important;
-    backdrop-filter: blur(3px);
-    padding: 20px !important;
-    min-height: 500px;
-}
 
 .diary-container h3 {
     margin-top: 0;
@@ -410,6 +416,11 @@ button.aero-btn:active {
     width: 100px;
     z-index: 10;
     pointer-events: none;
+}
+
+ul.tree-view {
+    background: transparent !important;
+    border: none !important;
 }
 /* OVERRIDEING HOMEPAGE STUFF*/
 .diary-container h3,
