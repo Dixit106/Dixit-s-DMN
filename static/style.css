@@ -242,10 +242,14 @@ canvas {
     z-index: 9999;
 } }
 
-body.diary-body {
-    background-image: url('/static/water2.webp');
+/*Diary.html css part....*/
+
+.diary-body {
+    background-image: url('/static/The\ S\ Aesthetic\ That\ You\ Definitely\ Recognize\ Frutiger\ Aero\ Wallpaper.png');
+    background-repeat: no-repeat;
+    background-size: cover;
     background-attachment: fixed;
-    background-position: center;
+    background-position: center center;
     margin: 0;
     min-height: 100vh;
 
@@ -253,8 +257,6 @@ body.diary-body {
     justify-content: center;
     align-items: center;
 }
-
-/*Diary.html css part....*/
 
 .window{
     width: 750px;
@@ -381,20 +383,34 @@ button.aero-btn:active {
     100% { transform: translateY(-35vh) scale(1.2); opacity: 0;}
 }
 
-.aero-grass {
+.underwater-grass {
     position: absolute;
-    bottom: 0;
+    bottom: -5px;
     left: 0;
     width: 100%;
-    height: 130%;
+    height: 60%;
 
-    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,80 C350,0 750,100 1200,20 L1200,120 L0,120 Z" fill="rgb(140, 220, 50)"/></svg>');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg"><path d="M100,150 Q80,75 120,0 Q130,75 100,150 Z" fill="rgba(100, 220, 50, 0.6)"/><path d="M100,150 Q60,80 50,30 Q80,90 100,150 Z" fill="rgba(130, 240, 80, 0.5)"/><path d="M100,150 Q140,80 170,40 Q130,90 100,150 Z" fill="rgba(70, 200, 30, 0.7)"/></svg>');
+    background-size: 200px 100%;
+    background-repeat: repeat-x;
 
-    filter: drop-shadow(0 -3px 8px rgba(150, 225, 50, 0.5));
+    animation: sway 4s ease-in-out infinite alternate;
+    transform-origin: bottom center;
 }
 
+@keyframes sway {
+    0% { transform: skewX(-6deg); }
+    100% { transform: skewX(6deg); }
+}
+
+#floating-avatar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100px;
+    z-index: 10;
+    pointer-events: none;
+}
 /* OVERRIDEING HOMEPAGE STUFF*/
 .diary-container h3,
 .diary-container p,
