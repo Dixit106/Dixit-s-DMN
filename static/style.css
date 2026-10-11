@@ -264,9 +264,17 @@ canvas {
     background: rgba(225, 225, 225, 0.2);
     backdrop-filter: blur(15px) saturate(150%);
     -webkit-backdrop-filter: blur(15px) saturate(150%); /* for safari*/
-    border: 1px solid rgba(225, 225, 225, 0.6);
     border-radius: 20px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    border: 8px solid transparent;
+    border-image: linear-gradient(
+        135deg,
+        rgba(225, 225, 225, 0.9) 0%,
+        rgba(225, 225, 225, 0.2) 30%,
+        rgba(150, 220, 255, 0.4) 70%,
+        rgba(225, 225, 225, 0.8) 100%
+    ) 1;
+    clip-path: inset(0 round 20px);
 }
 
 .entry-list {
@@ -274,12 +282,8 @@ canvas {
     padding: 0;
 }
 
-.diary-container {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
 
-
-.diary-container h3 {
+.aero-glass-panel h3 {
     margin-top: 0;
     margin-bottom: 15px;
     font-size: 24px;
@@ -287,7 +291,7 @@ canvas {
     padding-bottom: 10px;
 }
 
-.diary-container p{
+.aero-glass-panel p{
     font-size: 16px;
     line-height: 1.6;
     margin-bottom: 15px;
@@ -413,7 +417,7 @@ button.aero-btn:active {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100px;
+    width: 50px;
     z-index: 10;
     pointer-events: none;
 }
@@ -423,9 +427,9 @@ ul.tree-view {
     border: none !important;
 }
 /* OVERRIDEING HOMEPAGE STUFF*/
-.diary-container h3,
-.diary-container p,
-.diary-container div {
+.aero-glass-panel h3,
+.aero-glass-panel p,
+.aero-glass-panel div {
     color: black !important;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
     text-shadow: none !important;
