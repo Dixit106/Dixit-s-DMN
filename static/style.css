@@ -457,6 +457,15 @@ ul.tree-view {
     transform: scaleX(-1);
 }
 
+#floating-fish {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50px;
+    z-index: 10px;
+    pointer-events: none;   
+}
+
 /* OVERRIDEING HOMEPAGE STUFF*/
 .aero-glass-panel h3,
 .aero-glass-panel p,

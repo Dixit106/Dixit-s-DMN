@@ -12,6 +12,7 @@
 
     <img src="/static/frutiger_aero_avatar_png__by_caitlinpinkartist_dm9c4b4-pre.png" alt="Avatar" id="floating-avatar">
     <img src="/static/bottle.gif" alt="Sticker" id="floating-bottle-sticker">
+    <img src="/static/fishbowl.gif" alt="Sticker 2" id="floating-fish">
             <div class="aero-glass-panel">
                 <h3 style="color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.5)">DMN Logs & Entries</h3>
                 <p style="color: white;">Select a log file to read...</p>
@@ -119,9 +120,13 @@ const avatar = new FloatingItem('floating-avatar', 20,20,0.3,0.3);
 //bottle gif
 const sticker1 = new FloatingItem('floating-bottle-sticker', 20,200,0.3, 0.3);
 
+//fish gif
+const sticker2 = new FloatingItem('floating-fish', 50, 300, -0.3, 0.4);
+
 function animateAll() {
     avatar.move();
     sticker1.move();
+    sticker2.move();
 
     requestAnimationFrame(animateAll);
 }
