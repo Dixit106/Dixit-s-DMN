@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body class="diary-body">
+    <div class="bubble-border border-left"></div>
+    <div class="bubble-border border-right"></div>
+
     <img src="/static/frutiger_aero_avatar_png__by_caitlinpinkartist_dm9c4b4-pre.png" alt="Avatar" id="floating-avatar">
     <img src="/static/bottle.gif" alt="Sticker" id="floating-bottle-sticker">
             <div class="aero-glass-panel">
@@ -111,10 +114,10 @@
 //('element id', startx, starty, speedx, speedy)
 
 //avatar
-const avatar = new FloatingItem('floating-avatar', 20,20,0.5,0.5);
+const avatar = new FloatingItem('floating-avatar', 20,20,0.3,0.3);
 
 //bottle gif
-const sticker1 = new FloatingItem('floating-bottle-sticker', 20,20,0.4, -0.6);
+const sticker1 = new FloatingItem('floating-bottle-sticker', 20,200,0.3, 0.3);
 
 function animateAll() {
     avatar.move();

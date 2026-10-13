@@ -435,6 +435,28 @@ ul.tree-view {
     background: transparent !important;
     border: none !important;
 }
+
+.bubble-border {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    background-image: url('/static/bubbleborder.gif');
+    background-repeat: repeat-y;
+    z-index: 5;
+    pointer-events: none;
+}
+
+
+.border-left {
+    left: 0;
+}
+
+.border-right {
+    right: 0;
+    transform: scaleX(-1);
+}
+
 /* OVERRIDEING HOMEPAGE STUFF*/
 .aero-glass-panel h3,
 .aero-glass-panel p,
