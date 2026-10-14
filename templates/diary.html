@@ -13,6 +13,7 @@
     <img src="/static/frutiger_aero_avatar_png__by_caitlinpinkartist_dm9c4b4-pre.png" alt="Avatar" id="floating-avatar">
     <img src="/static/bottle.gif" alt="Sticker" id="floating-bottle-sticker">
     <img src="/static/fishbowl.gif" alt="Sticker 2" id="floating-fish">
+    <div class="main-layout">
             <div class="aero-glass-panel">
                 <h3 style="color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.5)">DMN Logs & Entries</h3>
                 <p style="color: white;">Select a log file to read...</p>
@@ -39,6 +40,28 @@
 
         </div>
 
+        <div class="right-sidebar">
+            <div class="aero-widget music-widget">
+                <div class="music-header">🎵 Media Player</div>
+
+                <div class="cd-container">
+                    <div class="aero-cd" id="spinning-cd"></div>
+                </div>
+
+                <div class="song-title">Track_01.mp3</div>
+
+                <div class="music-controls">
+                    <button class="aero-btn-small" id="play-pause-btn">▶</button>
+                </div>
+
+                <audio id="bg-audio">
+                    <source src="/static/Nintendo Wii U - Mii Maker Editing Mii (TV + Gamepad).mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+
+    </div>
+
 <div class="aero-water-container">
 
     <div class="wave wave-back"></div>
@@ -56,7 +79,7 @@
    
 
 <script>
-    const mainWindow = document.querySelector('.aero-glass-panel');
+    const mainWindow = document.querySelector('.main-layout');
     const water = document.querySelector('.aero-water-container');
 
     //reusable 'Blueprint' for anything we want to float!
@@ -133,6 +156,23 @@ function animateAll() {
 
 // Start the engine!
 requestAnimationFrame(animateAll);
+
+//music player Logic
+const audioEngine = document.getElementById('bg-audio');
+const playPauseBtn = document.getElementById('play-pause-btn');
+const SpinningCd = document.getElementById('spinning-cd');
+
+playPauseBtn.addEventListener('click', function(){
+    if (audioEngine.pause) {
+        audioEngine.play();
+        playPauseBtn.innerHTML = '⏸'
+        spinningCd.classList.add('spin');
+    } else {
+        audioEngine.pause();
+        playPauseBtn.innerHTML = '▶';
+        spinningCd.classList.remove('spin');
+    }
+});
 </script>
 
 </body>
