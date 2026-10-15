@@ -13,6 +13,7 @@
     <img src="/static/frutiger_aero_avatar_png__by_caitlinpinkartist_dm9c4b4-pre.png" alt="Avatar" id="floating-avatar">
     <img src="/static/bottle.gif" alt="Sticker" id="floating-bottle-sticker">
     <img src="/static/fishbowl.gif" alt="Sticker 2" id="floating-fish">
+    <img src="/static/bar-cat.gif" alt="Running Cat" id="border-cat">
     <div class="main-layout">
             <div class="aero-glass-panel">
                 <h3 style="color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.5)">DMN Logs & Entries</h3>
@@ -138,13 +139,13 @@
 //('element id', startx, starty, speedx, speedy)
 
 //avatar
-const avatar = new FloatingItem('floating-avatar', 20,20,0.3,0.3);
+const avatar = new FloatingItem('floating-avatar', 20,20,0.2,0.2);
 
 //bottle gif
-const sticker1 = new FloatingItem('floating-bottle-sticker', 20,200,0.3, 0.3);
+const sticker1 = new FloatingItem('floating-bottle-sticker', 20,200,0.2, 0.2);
 
 //fish gif
-const sticker2 = new FloatingItem('floating-fish', 50, 300, -0.3, 0.4);
+const sticker2 = new FloatingItem('floating-fish', 50, 300, 0.2, 0.2);
 
 function animateAll() {
     avatar.move();

@@ -258,6 +258,7 @@ canvas {
 }
 
 .aero-glass-panel{
+    position: relative;
     width: 800px;
     min-height: 500px;
     padding: 30px;
@@ -274,7 +275,17 @@ canvas {
         rgba(150, 220, 255, 0.4) 70%,
         rgba(225, 225, 225, 0.8) 100%
     ) 1;
-    clip-path: inset(0 round 20px);
+}
+
+#border-cat {
+    position: absolute;
+    top: 57px;
+    right: 420px;
+    height: 34px;
+    width: auto;
+    z-index: 20;
+    pointer-events: none;
+
 }
 
 .entry-list {
