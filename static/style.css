@@ -589,8 +589,16 @@ ul.tree-view {
     border-radius: 10px;
     box-shadow: inset 0 5px 15px rgba(0,0,0,0.2);
     border: 1px solid rgba(255, 255,255,0.3);
-    position: relative;
-    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#interactive-friend {
+    height: 90px;
+    width: auto;
+    cursor: pointer;
+    transition: transform 0.1s ease;
 }
 
 .virtual-friend {

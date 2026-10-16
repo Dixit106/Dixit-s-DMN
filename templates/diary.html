@@ -61,9 +61,9 @@
             </div>
 
             <div class="aero-widget friend-widget">
-                <h4 class="widget-header">Desktop Pet</h4>
+                <h4 class="widget-header">Virtual Friend</h4>
                 <div class="friend-habitat">
-                    <img src="/static/default_luffy.png" alt="Virtual Friend" class="virtual friend">
+                    <img src="/static/default_luffy.png" alt="Virtual Friend" class="virtual friend" id="interactive-friend">
                 </div>
             </div>
         </div>
@@ -168,10 +168,10 @@ requestAnimationFrame(animateAll);
 //music player Logic
 const audioEngine = document.getElementById('bg-audio');
 const playPauseBtn = document.getElementById('play-pause-btn');
-const SpinningCd = document.getElementById('spinning-cd');
+const spinningCd = document.getElementById('spinning-cd');
 
 playPauseBtn.addEventListener('click', function(){
-    if (audioEngine.pause) {
+    if (audioEngine.paused) {
         audioEngine.play();
         playPauseBtn.innerHTML = '⏸'
         spinningCd.classList.add('spin');
@@ -180,6 +180,27 @@ playPauseBtn.addEventListener('click', function(){
         playPauseBtn.innerHTML = '▶';
         spinningCd.classList.remove('spin');
     }
+});
+
+//virtual friend logic
+const myFriend = document.getElementById('interactive-friend');
+
+const luffyReactions = [
+    '/static/fat_luffy.png',
+    '/static/handsup_luffy.png',
+    '/static/jumping_luffy.png',
+    '/static/luffy_looking_right.png',
+    '/static/luffy_right_thumbsup.png'
+];
+
+myFriend.addEventListener('click', function() {
+    const randomIndex = Math.floor(Math.random() * luffyReactions.length);
+    myFriend.src = luffyReactions[randomIndex];
+    myFriend.style.transform = ' translateY(-15px)';
+    setTimeout(() => {
+        myFriend.src = '/static/default_luffy.png';
+        myFriend.style.transform = '';
+    }, 500);
 });
 </script>
 
