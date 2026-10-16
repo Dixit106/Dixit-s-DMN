@@ -146,13 +146,13 @@
 //('element id', startx, starty, speedx, speedy)
 
 //avatar
-const avatar = new FloatingItem('floating-avatar', 20,20,0.2,0.2);
+const avatar = new FloatingItem('floating-avatar', 20,20,0.1,0.1);
 
 //bottle gif
-const sticker1 = new FloatingItem('floating-bottle-sticker', 20,200,0.2, 0.2);
+const sticker1 = new FloatingItem('floating-bottle-sticker', 20,200,0.1, 0.1);
 
 //fish gif
-const sticker2 = new FloatingItem('floating-fish', 50, 300, 0.2, 0.2);
+const sticker2 = new FloatingItem('floating-fish', 50, 300, 0.1, 0.1);
 
 function animateAll() {
     avatar.move();
@@ -181,6 +181,26 @@ playPauseBtn.addEventListener('click', function(){
         spinningCd.classList.remove('spin');
     }
 });
+
+const myAvatar = document.getElementById('floating-avatar');
+
+myAvatar.addEventListener('click', function() {
+    myAvatar.classList.add('sticker-clicked');
+    setTimeout(() => {
+        myAvatar.classList.remove('sticker-clicked');
+        window.open('https://github.com/Dixit106', '_blank');
+    }, 300);
+});
+
+const myFish = document.getElementById('floating-fish');
+myFish.addEventListener('click', function() {
+    myFish.classList.add('sticker-clicked');
+    setTimeout(() => {
+        myFish.classList.remove('sticker-clicked');
+        window.open('https://youtu.be/haJfJAwpViI', '_blank');
+    }, 300);
+});
+
 
 //virtual friend logic
 const myFriend = document.getElementById('interactive-friend');

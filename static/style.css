@@ -430,7 +430,12 @@ button.aero-btn:active {
     left: 0;
     width: 60px;
     z-index: 10;
-    pointer-events: none;
+    cursor: pointer;
+    transition: filter 0.2s ease;
+}
+
+.sticker-clicked {
+    filter: drop-shadow(0 0 15px #aee8fa) brightness(1.3);
 }
 
 #floating-bottle-sticker {
@@ -474,7 +479,8 @@ ul.tree-view {
     left: 0;
     width: 50px;
     z-index: 10px;
-    pointer-events: none;   
+    cursor: pointer;
+    transition: filter 0.2s ease;
 }
 
 .main-layout {
