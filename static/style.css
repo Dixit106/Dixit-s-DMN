@@ -262,19 +262,28 @@ canvas {
     width: 800px;
     min-height: 500px;
     padding: 30px;
-    background: rgba(225, 225, 225, 0.2);
+
     backdrop-filter: blur(15px) saturate(150%);
     -webkit-backdrop-filter: blur(15px) saturate(150%); /* for safari*/
     border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-    border: 8px solid transparent;
-    border-image: linear-gradient(
+    border: 4px solid transparent;
+    background: 
+        linear-gradient(
         135deg,
-        rgba(225, 225, 225, 0.9) 0%,
-        rgba(225, 225, 225, 0.2) 30%,
-        rgba(150, 220, 255, 0.4) 70%,
-        rgba(225, 225, 225, 0.8) 100%
-    ) 1;
+        rgba(200,255,230,0.3) 0%,
+        rgba(255,255,255,0.1) 100%
+    ) padding-box,
+
+    linear-gradient(
+        135deg,
+        rgba(225,225,225,1) 0%,
+        rgba(120,255,180,0.5) 40%,
+        rgba(80, 200, 255,0.5) 70%,
+        rgba(255,255,255,0.9) 100%
+    ) border-box;
+    box-shadow:
+        0 15px 35px rgba(0, 40,50,0.2),
+        inset 0 0 20px rgba(255,255,255,0.4);
 }
 
 #border-cat {
@@ -492,7 +501,8 @@ ul.tree-view {
 .right-sidebar {
     position: absolute;
     left: 100%;
-    margin-left: 30px;
+    margin-left: 40px;
+    margin-top: 4px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -500,14 +510,32 @@ ul.tree-view {
 
 .aero-widget {
     width: 200px;
-    height: 200px;
-    padding: 20px;
-    box-sizing: border-box;
-    background: rgba(225,225,225,0.2);
+    padding: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     backdrop-filter: blur(15px) saturate(150%);
     -webkit-backdrop-filter: blur(15px) saturate(150%);
-    border: 2px solid rgba(225, 225, 225, 0.6);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border: 4px solid transparent;
+    border-radius: 20px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(200,255,230,0.3) 0%,
+            rgba(255,255,255,0.1) 100%
+        ) padding-box,
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,1) 0%,
+            rgba(120, 255,180,0.5) 40%,
+            rgba(80, 200,255,0.5) 70%,
+            rgba(255,255,255,0.9) 100%
+        ) border-box;
+
+    box-shadow:
+        0 15px 35px rgba(0,40,50,0.2),
+        inset 0 0 20px rgba(255,255,255,0.4);
 }
 
 .music-widget {
