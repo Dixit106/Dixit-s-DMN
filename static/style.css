@@ -650,6 +650,43 @@ ul.tree-view {
     100% { left: 0%; transform: scaleX(1); }
 }
 
+.light-rays {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99999;
+    pointer-events: none;
+    background: linear-gradient(
+        110deg,
+        transparent 15%,
+        rgba(255, 255, 255, 0.8) 25%,
+        transparent 35%,
+        transparent 50%,
+        rgba(255,255,255,0.6) 55%,
+        transparent 65%,
+        transparent 75%,
+        rgba(255,255,255,0.8) 80%,
+        transparent 90%
+    );
+
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 90%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 90%);
+    animation: raysBreathing 8s infinite alternate ease-in-out;
+}
+
+@keyframes raysBreathing {
+    0% {
+        opacity: 0.5;
+        transform: scale(1.1) translateX(-1%);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.1) translateX(1%);
+    }
+}
+
 /* OVERRIDEING HOMEPAGE STUFF*/
 .aero-glass-panel h3,
 .aero-glass-panel p,
