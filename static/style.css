@@ -262,7 +262,8 @@ canvas {
     width: 800px;
     min-height: 500px;
     padding: 30px;
-
+    color: #0b4a31;
+    font-family: 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     backdrop-filter: blur(15px) saturate(150%);
     -webkit-backdrop-filter: blur(15px) saturate(150%); /* for safari*/
     border-radius: 20px;
@@ -300,10 +301,49 @@ canvas {
 .entry-list {
     list-style-type: none;
     padding: 0;
+    margin-top: 20px;
+}
+
+.entry-list li {
+    margin-bottom: 12px;
+}
+
+details summary {
+    background: linear-gradient(to bottom, rgba(255,255,255,0.7), rgba(255,255,255,0.3));
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 6px;
+    padding: 12px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #00734d;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-shadow: 0 1px 1px rgba(255,255,255,0.9);
+    transition: all 0.2s ease;
+}
+
+details summary:hover {
+    background: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0.5));
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.entry-content {
+    background: rgba(255,255,255,0.3);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    padding: 15px;
+    margin-top: -4px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.03);
 }
 
 
-.aero-glass-panel h3 {
+.diary-body .aero-glass-panel h3 {
+    color: #00ff88 !important;
+    font-size: 26px;
+    text-shadow: 1px 2px 2px rgba(0, 80, 40, 0.9), 
+                 0 0 12px rgba(0, 255, 136, 0.8) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    padding-bottom: 10px;
     margin-top: 0;
     margin-bottom: 15px;
     font-size: 24px;
@@ -311,10 +351,14 @@ canvas {
     padding-bottom: 10px;
 }
 
-.aero-glass-panel p{
+.diary-body .aero-glass-panel p{
+    color: #005aa3 !important;
     font-size: 16px;
     line-height: 1.6;
+    font-weight: 500;
     margin-bottom: 15px;
+    text-shadow: 1 2px 2px rgba(0,102,204,0.9),
+                 0px 0px 12px rgba(0, 200, 255, 0.8) !important;
 }
 
 button.aero-btn{
