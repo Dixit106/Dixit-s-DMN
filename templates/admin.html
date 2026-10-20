@@ -10,10 +10,12 @@
         body {
             background: #008080;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
+            padding: 40px 0;
+            gap: 20px;
         }
     </style>
 </head>
@@ -49,5 +51,46 @@
         </div>
     </div>
     
+    <div class="window" style="width: 800px">
+        <div class="title-bar">
+            <div class="title-bar-text">Database_Manager.exe</div>
+        </div>
+        <div class="window-body" style="padding: 20px; max-height: 500px; overflow-y: scroll;">
+            {% for entry in entries %}
+                <fieldset style="margin-bottom: 25px; padding: 15px;">
+                    <legend style="font-weight: bold;">{{ entry.title }} ({{ entry.date_posted.strftime('%b %d, %Y') }})</legend>
+
+                    <form action="/edit/{{ entry.id }}" method="POST">
+                        <div class="field-row-stacked">
+                            <label>Title</label>
+                            <input name="title" type="text" value="{{ entry.title }}" style="width: 100%;">
+                        </div>
+
+                        <div class="field-row-stacked" style="margin-top: 10px;">
+                            <label>Image URL</label>
+                            <input name="image_url" type="text" value="{% if entry.image_url %}{{ entry.image_url}}{% endif %}" style="width: 100%;">
+                        </div>
+
+                        <div class="field-row-stacked" style="margin-top: 10px;">
+                            <label>Content</label>
+                            <textarea name="content" rows="4" style="width: 100%;">{{ entry.content }}</textarea>
+                        </div>
+                        
+                        <div style="margin-top: 15px; display: flex; gap: 10px;">
+                            <button type="submit">Save Edits</button>
+                        </div>
+                    </form>
+
+                    <form action="/delete/{{ entry.id }}" method="POST" style="margin-top: -23px; text-align: right;">
+                        <button type="submit" style="color: darkred">Delete Log</button>
+                    </form>
+                </fieldset>
+
+            {% else %}
+                <p>No logs found in the database.</p>
+            {% endfor %}
+        </div>
+    </div>
+
 </body>
 </html>
