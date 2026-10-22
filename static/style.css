@@ -15,12 +15,12 @@
 
 @font-face {
     font-family: 'MyHeadingFontDiary';
-    src: url('/static/Matcha\ World.ttf') format('truetype');
+    src: url('/static/PORKH___.TTF') format('truetype');
 }
 
 @font-face {
     font-family: 'MyParagraphFontDiary';
-    src: url('/static/Internet\ Friends.ttf') format('truetype');
+    src: url('/static/sportsjersey.ttf') format('truetype');
 }
 
 body {
@@ -354,10 +354,14 @@ details summary:hover {
 
 .diary-body .aero-glass-panel h3 {
     font-family: 'MyHeadingFontDiary', sans-serif !important;
-    color: #00ff88 !important;
+    color: #20f098 !important;
     font-size: 26px;
-    text-shadow: 1px 2px 2px rgba(0, 80, 40, 0.9), 
-                 0 0 12px rgba(0, 255, 136, 0.8) !important;
+    text-shadow: -1px -1px 0 #004020,
+                  1px -1px 0 #004020,
+                 -1px  1px 0 #004020,
+                  1px  1px 0 #004020,
+                 2px 3px 4px rgba(0, 40, 20, 0.8), 
+                 0px 0px 15px rgba(0, 255, 136, 0.6) !important;
     border-bottom: 1px solid rgba(255,255,255,0.5);
     padding-bottom: 10px;
     margin-top: 0;
@@ -514,7 +518,8 @@ button.aero-btn:active {
     left: 0;
     width: 80px;
     z-index: 10;
-    pointer-events: none;
+    cursor: pointer;
+    transition: filter 0.2s ease;
 }
 
 ul.tree-view {
