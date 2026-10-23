@@ -265,6 +265,18 @@ canvas {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: url('/static/Normal\ Select.cur'), auto !important;
+}
+
+.diary-body a,
+.diary-body button,
+.diary-body details summary,
+.diary-body #floating-avatar,
+.diary-body #floating-fish,
+.diary-body #floating-bottle-sticker,
+.diary-body #interactive-friend
+{
+    cursor: url('/static/Link\ Select.cur'), pointer  !important;
 }
 
 .aero-glass-panel{
