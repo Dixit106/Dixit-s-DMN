@@ -170,10 +170,81 @@ requestAnimationFrame(animateAll);
 const audioEngine = document.getElementById('bg-audio');
 const playPauseBtn = document.getElementById('play-pause-btn');
 const prevBtn = document.getElementById('prev-btn');
-const nextBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 const spinningCd =document.getElementById('spinning-cd');
 const songTitle = document.getElementById('current-song-title');
+
+//song file
+const playlist = [
+    {
+        title: "Wii U Mii Maker",
+        src: "/static/Nintendo Wii U.mp3"
+    },
+    {
+        title: "Butterflies",
+        src: "/static/Butterflies.mp3"
+    },
+    {
+        title: "LEASE",
+        src: "/static/LEASE.mp3"
+    },
+    {
+        title: "Nintendo Wii",
+        src: "/static/Wii Party.mp3"
+    },
+    {
+        title: "Flim",
+        src: "/static/Flim.mp3"
+    }
+];
+
+let currentSongIndex = 0;
+
+function loadSong(index) {
+    songTitle.innerText = playlist[index].title;
+    audioEngine.src = playlist[index].src;
+}
+loadSong(currentSongIndex);
+
+playPauseBtn.addEventListener('click', function(){
+    if (audioEngine.paused) {
+        audioEngine.play();
+        playPauseBtn.innerHTML = "⏸";
+        spinningCd.classList.add('spin');
+    }else {
+        audioEngine.pause();
+        playPauseBtn.innerHTML = '▶';
+        spinningCd.classList.remove('spin');
+    }
+});
+
+nextBtn.addEventListener('click', function() {
+    currentSongIndex++;
+    if (currentSongIndex >= playlist.length) {
+        currentSongIndex = 0;
+    }
+    loadSong(currentSongIndex);
+
+    audioEngine.play();
+    playPauseBtn.innerHTML = '⏸'
+    spinningCd.classList.add('spin');
+});
+
+prevBtn.addEventListener('click', function() {
+    currentSongIndex--;
+    if(currentSongIndex < 0) {
+        currentSongIndex = playlist.length - 1;
+    }
+    loadSong(currentSongIndex);
+
+    audioEngine.play();
+    playPauseBtn.innerHTML = '⏸';
+    spinningCd.classList.add('spin');
+});
+
+audioEngine.addEventListener('ended', function() {
+    nextBtn.click();
+});
 
 const myFish = document.getElementById('floating-fish');
 myFish.addEventListener('click', function() {

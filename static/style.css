@@ -624,6 +624,11 @@ ul.tree-view {
     justify-content: space-between;
 }
 
+.song-title {
+    font-family: 'MyParagraphFontDiary', sans-serif !important;
+    color:#C6011F;
+}
+
 .music-header {
     font-family: 'MyHeadingFontDiary', sans-serif !important;
     color: #006241;
