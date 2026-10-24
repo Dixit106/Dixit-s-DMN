@@ -1,0 +1,4 @@
+.env
+diary.db
+.vscode/
+__pycache__/

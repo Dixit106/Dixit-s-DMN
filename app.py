@@ -1,6 +1,11 @@
-from flask import Flask, render_template, url_for, request, redirect
+import os
+from functools import wraps
+from flask import Flask, render_template, url_for, request, redirect, Response
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -48,8 +53,25 @@ def eye():
 def mail():
     return render_template('mail.html')
 
+def check_auth(username, password):
+    admin_user = os.getenv('ADMIN_USER')
+    admin_pass = os.getenv('ADMIN_PASS')
+    return username == admin_user and password == admin_pass
+
+def authenticate():
+    return Response('Terminal Locked. Access Denied.', 401, {'WWW-Authenticate': 'Basic realm="Admin Login Required"'})
+
+def requires_auth(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        auth = request.authorization
+        if not auth or not check_auth(auth.username, auth.password):
+            return authenticate()
+        return f(*args, **kwargs)
+    return decorated
 #Secret Admin Page(for me)
 @app.route('/secret-admin', methods=['GET', 'POST'])
+@requires_auth
 def admin():
     if request.method == 'POST':
         entry_title = request.form['title']
@@ -67,6 +89,7 @@ def admin():
 
 #Delete route for database
 @app.route('/delete/<int:id>', methods=['POST'])
+@requires_auth
 def delete_entry(id):
     entry = DiaryEntry.query.get_or_404(id)
     db.session.delete(entry)
@@ -75,6 +98,7 @@ def delete_entry(id):
 
 #Edit route
 @app.route('/edit/<int:id>', methods=['GET', 'POST'])
+@requires_auth
 def edit_entry(id):
     entry = DiaryEntry.query.get_or_404(id)
     if request.method == 'POST':
