@@ -43,27 +43,27 @@
 
         <div class="right-sidebar">
             <div class="aero-widget music-widget">
-                <div class="music-header">🎵 Media Player</div>
+                <div class="music-header">Media Player</div>
 
                 <div class="cd-container">
                     <div class="aero-cd" id="spinning-cd"></div>
                 </div>
 
-                <div class="song-title">Track_01.mp3</div>
+                <div class="song-title" id="current-song-title">Nintendo Wii U </div>
 
-                <div class="music-controls">
+                <div class="music-controls" style="display: flex; gap: 10px; margin-top: 10px;">
+                    <button class="aero-btn-small" id="prev-btn">⏮</button>
                     <button class="aero-btn-small" id="play-pause-btn">▶</button>
+                    <button class="aero-btn-small" id="next-btn">⏭</button>
                 </div>
 
-                <audio id="bg-audio">
-                    <source src="/static/Nintendo Wii U - Mii Maker Editing Mii (TV + Gamepad).mp3" type="audio/mpeg">
-                </audio>
+                <audio id="bg-audio"></audio>
             </div>
 
             <div class="aero-widget friend-widget">
                 <h4 class="widget-header">Virtual Friend</h4>
                 <div class="friend-habitat">
-                    <img src="/static/default_luffy.png" alt="Virtual Friend" class="virtual friend" id="interactive-friend">
+                    <img src="/static/default_luffy.png" alt="Virtual Friend" class="virtual-friend" id="interactive-friend">
                 </div>
             </div>
         </div>
@@ -169,29 +169,11 @@ requestAnimationFrame(animateAll);
 //music player Logic
 const audioEngine = document.getElementById('bg-audio');
 const playPauseBtn = document.getElementById('play-pause-btn');
-const spinningCd = document.getElementById('spinning-cd');
-
-playPauseBtn.addEventListener('click', function(){
-    if (audioEngine.paused) {
-        audioEngine.play();
-        playPauseBtn.innerHTML = '⏸'
-        spinningCd.classList.add('spin');
-    } else {
-        audioEngine.pause();
-        playPauseBtn.innerHTML = '▶';
-        spinningCd.classList.remove('spin');
-    }
-});
-
-const myAvatar = document.getElementById('floating-avatar');
-
-myAvatar.addEventListener('click', function() {
-    myAvatar.classList.add('sticker-clicked');
-    setTimeout(() => {
-        myAvatar.classList.remove('sticker-clicked');
-        window.open('https://github.com/Dixit106', '_blank');
-    }, 300);
-});
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const spinningCd =document.getElementById('spinning-cd');
+const songTitle = document.getElementById('current-song-title');
 
 const myFish = document.getElementById('floating-fish');
 myFish.addEventListener('click', function() {

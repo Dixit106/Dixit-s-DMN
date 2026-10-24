@@ -390,7 +390,7 @@ details summary:hover {
     line-height: 1.6;
     font-weight: 500;
     margin-bottom: 15px;
-    text-shadow: 1 2px 2px rgba(0,102,204,0.9),
+    text-shadow: 1px 2px 2px rgba(0,102,204,0.9),
                  0px 0px 12px rgba(0, 200, 255, 0.8) !important;
 }
 
@@ -625,7 +625,8 @@ ul.tree-view {
 }
 
 .music-header {
-    color: white;
+    font-family: 'MyHeadingFontDiary', sans-serif !important;
+    color: #006241;
     font-size: 14px;
     font-weight: bold;
     text-shadow: 0 1px 2px rgba(0,0,0,0.5);
@@ -683,7 +684,8 @@ ul.tree-view {
 }
 
 .widget-header {
-    color: white;
+    font-family: 'MyHeadingFontDiary', sans-serif !important;
+    color: #C6011F;
     font-size: 14px;
     font-weight: bold;
     text-shadow: 0 1px 2px rgba(0,0,0,0.5);
