@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>diary</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
 </head>
 <body class="diary-body">
     <div class="bubble-border border-left"></div>
@@ -88,6 +89,11 @@
 
 
 <script>
+    window.addEventListener("load", (event) => {
+new cursoreffects.rainbowCursor(); 
+    });
+
+
     const mainWindow = document.querySelector('.main-layout');
     const water = document.querySelector('.aero-water-container');
 
