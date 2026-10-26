@@ -363,6 +363,14 @@ details summary:hover {
     overflow-y: auto;
 }
 
+.entry-image {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 10px rgba(0, 40, 50, 0.2);
+}
+
 
 .diary-body .aero-glass-panel h3 {
     font-family: 'MyHeadingFontDiary', sans-serif !important;
@@ -518,6 +526,7 @@ button.aero-btn:active {
     z-index: 10;
     cursor: pointer;
     transition: filter 0.2s ease;
+    z-index: 1000;
 }
 
 .sticker-clicked {
@@ -532,6 +541,7 @@ button.aero-btn:active {
     z-index: 10;
     cursor: pointer;
     transition: filter 0.2s ease;
+    z-index: 1000;
 }
 
 ul.tree-view {
@@ -565,7 +575,7 @@ ul.tree-view {
     top: 0;
     left: 0;
     width: 50px;
-    z-index: 10px;
+    z-index: 1000;
     cursor: pointer;
     transition: filter 0.2s ease;
 }
