@@ -23,6 +23,12 @@
     src: url('/static/sportsjersey.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'SymbolFix';
+    src: local('Segoe UI'), local('Arial');
+    unicode-range: U+0021-002F, U+003A-0040, U+005B-0060, U+007B-007E;
+}
+
 body {
     background-image: url(pdj50168.gif);
     background-repeat: repeat;
@@ -392,7 +398,7 @@ details summary:hover {
 }
 
 .diary-body .aero-glass-panel p{
-    font-family: 'MyParagraphFontDiary', sans-serif !important;
+    font-family: 'SymbolFix', 'MyParagraphFontDiary', sans-serif !important;
     color: #005aa3 !important;
     font-size: 16px;
     line-height: 1.6;
