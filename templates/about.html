@@ -6,71 +6,88 @@
     <title>About</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
- <div class="portrait-container">
-    <!--Default Image-->
-    <img src="{{ url_for('static', filename='ascii-art_dixit.png') }}" alt="ASCII Dixit" id="ascii-image" class="visible-image">
-    <img src="{{ url_for('static', filename='digicam.jpg') }}" alt="Dixit" id="base-image" class="visible-image" style="display: none;">
-    <canvas id="trail-canvas"></canvas>
+<body style="background: #0a0a0a !important; background-image: none !important; margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; cursor: auto !important;">
+
+ <div style="position: relative; width: fit-content; border-radius: 16px; overflow: hidden; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+    
+    <!-- 1. The visible ASCII image -->
+    <img src="/static/ascii-art_dixit.png id="ascii-image" style="max-height: 85vh; width: auto; display: block;">
+    
+    <!-- 2. The Base image (Forced to load, but hidden with opacity 0) -->
+    <img src="/static/digicam.jpg id="base-image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; pointer-events: none;">
+    
+    <!-- 3. The Canvas layer -->
+    <canvas id="trail-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: crosshair; z-index: 10; touch-action: none;"></canvas>
  </div>
 
  <script>
     const canvas = document.getElementById('trail-canvas');
     const ctx = canvas.getContext('2d');
-    const visibleImg = document.getElementById('ascii-image'); // Fixed typo here
+    const visibleImg = document.getElementById('ascii-image');
     const hiddenImg = document.getElementById('base-image');
 
     let trail = [];
 
+    // Upgraded sizing engine: matches the exact rendered pixels on screen
     function resizeCanvas() {
-        canvas.width = visibleImg.offsetWidth;
-        canvas.height = visibleImg.offsetHeight;
+        canvas.width = visibleImg.clientWidth;
+        canvas.height = visibleImg.clientHeight;
     }
 
-    visibleImg.addEventListener('load', resizeCanvas);
-    window.addEventListener('resize', resizeCanvas);
-
-    if (visibleImg.complete) {
-        resizeCanvas();
-    }
+    // Force resize the moment the visible image paints to the screen
+    visibleImg.onload = resizeCanvas;
 
     canvas.addEventListener('mousemove', (e) => {
         const rect = canvas.getBoundingClientRect();
+        // Calculate exact mouse position relative to the canvas
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-
+        
         trail.push({ x: x, y: y, age: 0 });
     });
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+        
+        // Step A: Draw the liquid mask (black circles)
         trail.forEach((point, index) => {
             point.age += 1;
 
-            if(point.age > 45) {
+            if(point.age > 50) {
                 trail.splice(index, 1);
                 return;
             }
 
-            const radius = 60;
-            const opacity = 1 - (point.age / 45);
+            const radius = 80; // Larger brush for better effect
+            const opacity = 1 - (point.age / 50);
+
+            const gradient = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, radius);
+            gradient.addColorStop(0, `rgba(0, 0, 0, ${opacity})`);
+            gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
 
             ctx.beginPath();
             ctx.arc(point.x, point.y, radius, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(0, 0, 0, ${opacity})`;
+            ctx.fillStyle = gradient;
             ctx.fill();
-        });
+      });
 
-        ctx.globalCompositeOperation = 'source-in';
-        ctx.drawImage(hiddenImg, 0, 0, canvas.width, canvas.height); // Fixed typo here
+      // Step B: Use the mask to reveal the hidden image
+      if (hiddenImg.complete) {
+          ctx.globalCompositeOperation = 'source-in';
+          ctx.drawImage(hiddenImg, 0, 0, canvas.width, canvas.height);
+      }
 
-        ctx.globalCompositeOperation = 'source-over';
-
-        requestAnimationFrame(animate);
+      // Reset for the next frame
+      ctx.globalCompositeOperation = 'source-over';
+      requestAnimationFrame(animate);
     }
 
-    animate();
+    window.addEventListener('load', () => {
+        resizeCanvas();
+        animate();
+    });
+
+    window.addEventListener('resize', resizeCanvas);
 </script>
     
 </body>
