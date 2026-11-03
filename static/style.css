@@ -824,8 +824,14 @@ ul.tree-view {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    mask-image: radial-gradient(circle 120px at var(--x, -100%) var(--y, -100%), black 0%, transparent 100%);
-    -webkit-mask-image: radial-gradient(circle 120px at var(--x, -100%) var(--y, -100%), black 0%, transparent 100%);
+    mask-image: 
+        radial-gradient(ellipse 160px 130px at var(--x1, -100%) var(--y1, -100%), black 0%, transparent 100%),
+        radial-gradient(circle 90px at var(--x2, -100%) var(--y2, -100%), black 0%, transparent 100%);  
+    -webkit-mask-image: 
+        radial-gradient(ellipse 160px 130px at var(--x1, -100%) var(--y1, -100%), black 0%, transparent 100%),
+        radial-gradient(circle 90px at var(--x2, -100%) var(--y2, -100%), black 0%, transparent 100%);
+        
     mask-repeat: no-repeat;
     -webkit-mask-repeat: no-repeat;
+
 }

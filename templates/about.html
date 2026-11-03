@@ -15,24 +15,44 @@
         <img src="{{ url_for('static', filename='digicam.jpg') }}" class="top-layer" id="reveal-image">
     </div>
     
- <script>
+<script>
     const container = document.getElementById('hover-container');
     const revealImg = document.getElementById('reveal-image');
 
+    let targetX = -100;
+    let targetY = -100;
+    let currentX1 = -100;
+    let currentY1 = -100;
+    let currentX2 = -100;
+    let currentY2 = -100;
+
     container.addEventListener('mousemove', (e) => {
         const rect = container.getBoundingClientRect();
-
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-        revealImg.style.setProperty('--x', `${x}%`);
-        revealImg.style.setProperty('--y', `${y}%`);
+        targetX = ((e.clientX - rect.left) / rect.width) * 100;
+        targetY = ((e.clientY - rect.top) / rect.height) * 100;
     });
 
     container.addEventListener('mouseleave', () => {
-        revealImg.style.setProperty('--x', `-100%`);
-        revealImg.style.setProperty('--y', `-100%`);
+        targetX = -100;
+        targetY = -100;
     });
+
+    function animate() {
+        // Formula: current = current + (target - current) * speed
+        currentX1 += (targetX - currentX1) * 0.04; 
+        currentY1 += (targetY - currentY1) * 0.04;
+        currentX2 += (targetX - currentX2) * 0.12;
+        currentY2 += (targetY - currentY2) * 0.12;
+
+        revealImg.style.setProperty('--x1', `${currentX1}%`);
+        revealImg.style.setProperty('--y1', `${currentY1}%`);
+        revealImg.style.setProperty('--x2', `${currentX2}%`);
+        revealImg.style.setProperty('--y2', `${currentY2}%`);
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
 </script>
     
 </body>
