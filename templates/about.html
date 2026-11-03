@@ -4,17 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css', v=3) }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='about.css', v=1) }}">
 </head>
 
-<body id="about-page">
+<body>
 
+    <section class="hero-section">
     <div class="portrait-wrapper" id="hover-container">
         <img src="{{ url_for('static', filename='ascii-art_dixit.png') }}" class="bottom-layer">
 
         <img src="{{ url_for('static', filename='digicam.jpg') }}" class="top-layer" id="reveal-image">
     </div>
+    </section>
     
+    <section class="bento-section">
+        <div class="bento-box box-intro">
+            <h2 style="margin: 0; font-size: 2rem;">Tinkerer</h2>
+            <p style="color: #888; font-size: 1.1rem; margin-top: 12px; line-height: 1.5;">
+               I build stuff! THX to Hackclub & Me & Other people I should Thank... 
+            </p>
+        </div>
+
+        <div class="bento-box box-location">
+            <img src="{{ url_for('static', filename='himachalpradesh-location.webp') }}" alt="LocationMap">
+            <div class="location-text">Himachal Pradesh, India</div>
+        </div>
+
+    </section>
+
 <script>
     const container = document.getElementById('hover-container');
     const revealImg = document.getElementById('reveal-image');
