@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='about.css', v=1) }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='about.css', v=2) }}">
 </head>
 
 <body>
@@ -18,14 +18,7 @@
     </section>
     
     <section class="bento-section">
-        <div class="bento-box box-intro">
-            <h2 style="margin: 0; font-size: 2rem;">Tinkerer</h2>
-            <p style="color: #888; font-size: 1.1rem; margin-top: 12px; line-height: 1.5;">
-               I build stuff! THX to Hackclub & Me & Other people I should Thank... 
-            </p>
-        </div>
-
-        <div class="bento-box box-location">
+        <div class="bento-box box-location" id="map-box">
             <img src="{{ url_for('static', filename='himachalpradesh-location.webp') }}" alt="LocationMap">
             <div class="location-text">Himachal Pradesh, India</div>
         </div>
@@ -70,6 +63,11 @@
     }
 
     animate();
+
+    const mapBox = document.getElementById('map-box');
+    mapBox.addEventListener('click', () => {
+        mapBox.classList.toggle('zoomed');
+    });
 </script>
     
 </body>
