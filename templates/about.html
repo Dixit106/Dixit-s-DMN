@@ -99,7 +99,25 @@
         </aside>
     </section>
 
-<script>
+<script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"
+        }
+    }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+
+        //Here we have Projects & Hack Club Rewards Data
+        const items = [
+            { title: "Hackpad", note: "Custom 6-key macro pad with RP2040.", tag: "VOLUME I · PROJECT", desc: "Designed in KiCad, fabricated via JLCPCB, and hand-soldered with mechanical switches, an EC11 rotary encoder", type: "Hardware Grant", stack: "KiCad · RP2040", color: "#182a43", group: "01 // PROJECTS"},
+            { title: "Mechanical Keyboard", note: "Premium feel keyboard with creemy sound switches.", tag: "VOLUME II · REWARD", desc: "Cool mechanical keyboard with rotatory encoder and tft screen. It has good premium feel for a 8k indian ruppes prize.", type: "Keyboard", stack: "Macondo YSWS Reward", color: "#78a7bd", group: "02 // REWARDS" }
+        ];
+        
     const container = document.getElementById('hover-container');
     const revealImg = document.getElementById('reveal-image');
 
