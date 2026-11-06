@@ -47,68 +47,56 @@
 
     </section>
 
-    <section class="shelf-section">
-        <div class="shelf-container">
+   <section class="shelf-exp" id="shelf-exp">
+        <canvas id="shelf-canvas"></canvas>
 
-            <div class="shelf-divider">
-                <span>01 // PROJECT</span>
+        <header class="shelf-header">
+            <div>
+                <strong>Working Volumes</strong>
+                <span>Hack Club Projects & Rewards</span>
             </div>
+            <div class="shelf-meta">
+                <span id="shelf-group">01 // PROJECTS</span>
+                <span id="shelf-palette">Ultramarine · copper</span>
+            </div>
+        </header>
 
-            <div class="shelf-item">
-                <div class="spine-label">HACKPAD</div>
-                <div class="item-card">
-                    <img src="" alt="Hackpad">
-                    <div class="item-info">
-                        <h3>Custom Macro Pad</h3>
-                        <p>RP2040 + OLED + KiCad PCB</p>
-                    </div>
+        <div class="shelf-browse">
+            <div class="shelf-selection">
+                <span id="shelf-counter">01 / 05</span>
+                <div>
+                    <h2 id="shelf-title">Hackpad</h2>
+                    <p id="shelf-note">Custom 6-key macro pad with RP2040.</p>
                 </div>
             </div>
 
-            <div class="shelf-item">
-                <div class="spine-label">SHADOW-TRACE</div>
-                <div class="item-card">
-                    <img src="" alt="Shadow Trace">
-                    <h3>Shadow-Trace</h3>
-                    <p>Python CLI OSINT Recon Tool</p>
-                </div>
+            <div class="shelf-actions">
+                <button class="round-btn" id="prev-btn">←</button>
+                <button class="pill-btn" id="open-btn">Open</button>
+                <button class="round-btn" id="next-btn">→</button>
             </div>
+
+            <p class="shelf-hint">Wheel · arrows · select</p>
         </div>
 
-        <div class="shelf-item">
-            <div class="spine-label">BEHIND-PHOTON</div>
-            <div class="item-card">
-                <img src="" alt="Behind  Photon">
-                <div class="item-info">
-                    <h3>Behind-Photon</h3>
-                    <p>EXIF Metadata Analyzer</p>
+        <aside class="shelf-detail" id="shelf-detail">
+            <button class="round-btn close-btn" id="close-btn">✕</button>
+            <p class="detail-tag" id="detail-tag">VOLUME I · PROJECT</p>
+            <h3 id="detail-title">Hackpad</h3>
+            <p class="detail-desc" id="detail-desc">
+                Designed in KiCad and hand-soldered with mechanical switches, an EC11 rotary encoder.
+            </p>
+            <dl class="detail-specs">
+                <div>
+                    <dt>TYPE</dt>
+                    <dd id="spec-type">Hardware Grant</dd>
                 </div>
-            </div>
-        </div>
-
-        <div class="shelf-item">
-            <div class="spine-label">PRECISION SCREWDRIVER SET</div>
-            <div class="item-card">
-                <img src="" alt="Precision Screwdriver Set">
-                <div class="item-info">
-                    <h3>Small Screwdriver</h3>
-                    <p>HackClub Macondo Shop</p>
+                <div>
+                    <dt>STACK</dt>
+                    <dd id="spec-stack">KiCad · RP2040</dd>
                 </div>
-            </div>
-        </div>
-
-        <div class="shelf-item">
-            <div class="spine-label">KEYBOARD</div>
-            <div class="item-card">
-                <img src="" alt="Keyboard">
-                <div class="item-info">
-                    <h3>Mechanical Keyboard</h3>
-                    <p>Hackclub Macondo Shop</p>
-                </div>
-            </div>
-        </div>
-
-    <div class="shelf-ledge"></div>
+            </dl>
+        </aside>
     </section>
 
 <script>
