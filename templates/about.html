@@ -112,7 +112,7 @@
         import * as THREE from 'three';
         import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 
-        //Here we have Projects & Hack Club Rewards Data
+        // Here we have Projects & Hack Club Rewards Data
         const items = [
             { title: "Hackpad", note: "Custom 6-key macro pad with RP2040.", tag: "VOLUME I · PROJECT", desc: "Designed in KiCad, fabricated via JLCPCB, and hand-soldered with mechanical switches, an EC11 rotary encoder", type: "Hardware Grant", stack: "KiCad · RP2040", color: "#182a43", group: "01 // PROJECTS"},
             { title: "Mechanical Keyboard", note: "Premium feel keyboard with creemy sound switches.", tag: "VOLUME II · REWARD", desc: "Cool mechanical keyboard with rotatory encoder and tft screen. It has good premium feel for a 8k indian ruppes prize.", type: "Keyboard", stack: "Macondo YSWS Reward", color: "#78a7bd", group: "02 // REWARDS" }
@@ -121,34 +121,34 @@
         const exp = document.getElementById('shelf-exp');
         const canvas = document.getElementById('shelf-canvas');
         const scene = new THREE.Scene();
-        const camera = THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 50);
+        const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 50);
         camera.position.set(0, 1.6, 7.5);
         const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
-        render.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-        //Lighting thing
-        scene.add(new TREE.AmbientLight(0xffffff, 0.7));
+        // Lighting thing
+        scene.add(new THREE.AmbientLight(0xffffff, 0.7));
         const dirLight = new THREE.DirectionalLight(0xfff5e6, 1.2);
         dirLight.position.set(5, 6, 4);
         scene.add(dirLight);
 
-        //shelf 
+        // shelf 
         const shelfGeo = new THREE.BoxGeometry(12, 0.15, 1.2);
         const shelfMat = new THREE.MeshStandardMaterial({ color: 0x3a2118, roughness: 0.6 });
         const shelf = new THREE.Mesh(shelfGeo, shelfMat);
         shelf.position.set(0, -0.2, 0);
         scene.add(shelf);
 
-        //3d books
+        // 3d books
         const books = [];
         const spacing = 1.4;
 
         items.forEach((item, index) => {
             const group = new THREE.Group();
 
-            //Hardcover like the outer part
-            const bookGeo = new RoundedBoxGeometryS(1.0, 1.5, 0.28, 4, 0.03);
+            // Hardcover like the outer part
+            const bookGeo = new RoundedBoxGeometry(1.0, 1.5, 0.28, 4, 0.03);
             const mat = new THREE.MeshStandardMaterial({ color: item.color, roughness: 0.8 });
             const mesh = new THREE.Mesh(bookGeo, mat);
             group.add(mesh);
@@ -162,12 +162,12 @@
         let currentIndex = 0;
         let isDetailed = false;
 
-        //Ui elements thingge
+        // Ui elements thingge
         const titleEl = document.getElementById('shelf-title');
         const noteEL = document.getElementById('shelf-note');
         const counterEl = document.getElementById('shelf-counter');
         const groupEl = document.getElementById('shelf-group');
-        const paletteEl = document.getElementById('shelf-paletee');
+        const paletteEl = document.getElementById('shelf-palette');
         const detailTitle = document.getElementById('detail-title');
         const detailDesc = document.getElementById('detail-desc');
         const detailTag = document.getElementById('detail-tag');
@@ -178,21 +178,80 @@
             const b = items[idx];
             titleEl.textContent = b.title;
             noteEL.textContent = b.note;
-            counterEl.textContent = `0${idx + 1} / 0${items.lenght}`;
+            counterEl.textContent = `0${idx + 1} / 0${items.length}`;
             groupEl.textContent = b.group;
-            paletteEl.textContent = b.group;
-            paletteEL.textContent = '${b.title} · theme';
+            paletteEl.textContent = `${b.title} · theme`;
 
             detailTitle.textContent = b.title;
             detailDesc.textContent = b.desc;
-            detailTag.textContent = b.desc;
+            detailTag.textContent = b.tag;
             specType.textContent = b.type;
             specStack.textContent = b.stack;
 
-            //background shft threeeUi
+            // background shft threeeUi
             exp.style.setProperty('--paper', b.color);
         }
-        
+
+        // Navigation
+        document.getElementById('next-btn').onclick = () => {
+            if (isDetailed) return;
+            currentIndex = (currentIndex + 1) % items.length;
+            updateUI(currentIndex);
+        };
+
+        document.getElementById('prev-btn').onclick = () => {
+            if (isDetailed) return;
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            updateUI(currentIndex);
+        };
+
+        // detail view by opening
+        document.getElementById('open-btn').onclick = () => {
+            isDetailed = true;
+            exp.classList.add('mode-detail');
+        };
+
+        document.getElementById('close-btn').onclick = () => {
+            isDetailed = false;
+            exp.classList.remove('mode-detail');
+        };
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            books.forEach((b, i) => {
+                const isSelected = i === currentIndex;
+
+                // sliding logic
+                let targetX = b.baseX - (currentIndex * spacing);
+                let targetZ = isSelected ? 0.8 : 0;
+                let targetRotY = 0;
+
+                if (isDetailed && isSelected) {
+                    targetX = -1.2;
+                    targetZ = 1.2;
+                    targetRotY = -0.35;
+                }
+
+                b.group.position.x += (targetX - b.group.position.x) * 0.1;
+                b.group.position.z += (targetZ - b.group.position.z) * 0.1;
+                b.group.rotation.y += (targetRotY - b.group.rotation.y) * 0.1;
+            });
+
+            renderer.render(scene, camera);
+        }
+
+        updateUI(0);
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+    
+    <script>
     const container = document.getElementById('hover-container');
     const revealImg = document.getElementById('reveal-image');
 
