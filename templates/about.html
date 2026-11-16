@@ -306,6 +306,54 @@
     mapBox.addEventListener('click', () => {
         mapBox.classList.toggle('zoomed');
     });
+//terminal crt part
+const terminalScreen = document.getElementById('terminal-screen');
+const bootSequence = [
+    "<span class='term-dim'>[ OK ]</span> Started System Logging Service.",
+    "<span class='term-dim'>[ OK ]</span> Reached target Arch Linux Boot.",
+    "Mounting <span class='term-sys'>/dev/nvme0n1p2</span> on /mnt/data...",
+    "",
+    "Welcome to <span class='term-sys'>Arch Linux (Hyperland)</span>",
+    "Kernal: 6.8.9-arch1-1",
+    "Uptime: 100 years, 67 months, 69 days",
+    "",
+    "USER INQUIRY DETECTED.",
+    "QUERYING current objectives...",
+    "",
+    "> STATUS: ????",
+    "> FOCUS: ????",
+    "> CURRENT DIRECTORY: <span class='term-sys'> ~/?????/himachal-pradesh/India</span>",
+    "",
+    "System ready. Awaiting input_"
+];
+
+let currentLine = 0;
+let terminalStarted = false;
+
+//typewriter efffect function
+function typeTerminal() {
+    if (currentLine < bootSequence.length) {
+        const textToPrint = bootSequence.slice(0, currentLine + 1).join('\n');
+        terminalScreen.innerHTML = textToPrint + "<span class='terminal-cursor'></span>";
+
+        terminalScreen.innerHTML = textToPrint + "<span class='terminal-cursor'></span>";
+
+        currentLine++;
+
+        const delay = Math.random() * 300 + 100;
+        setTimeout(typeTerminal, delay);
+    }
+}
+
+//scrooling=typing thing
+const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !terminalStarted) {
+        terminalStarted = true;
+        typeTerminal();
+    }
+}, { threshold: 0.5 });
+
+observer.observe(document.getElementById('terminal-section'));
 </script>
     
 </body>
