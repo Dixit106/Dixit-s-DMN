@@ -6,7 +6,7 @@
     <title>About</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='about.css', v=2) }}">
 </head>
-
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 <body>
 
     <section class="hero-section">
@@ -101,13 +101,9 @@
 
     <section class="terminal-section" id="terminal-section">
         <div class="crt-monitor">
-            <!--Scanline and screen glare filter -->
-            <div class="crt-glass"></div>
-            <div class="crt-scanlines"></div>
-            <!--glowing text-->
-            <div class="terminal-screen" id="terminal-screen">
-                <!--js boot sequence here will do later(procastination OP)-->
-            </div>
+            <canvas id="crt-webgl-canvas"></canvas>
+            <!--Hidden DOM elemet used to read css color classes -->
+            <div class="terminal-screen" id="terminal-screen" hidden></div>
         </div>
     </section>
 
@@ -306,8 +302,11 @@
     mapBox.addEventListener('click', () => {
         mapBox.classList.toggle('zoomed');
     });
+
 //terminal crt part
 const terminalScreen = document.getElementById('terminal-screen');
+const crtCanvas = document.getElementById('crt-webgl-canvas');
+
 const bootSequence = [
     "<span class='term-dim'>[ OK ]</span> Started System Logging Service.",
     "<span class='term-dim'>[ OK ]</span> Reached target Arch Linux Boot.",
@@ -328,7 +327,35 @@ const bootSequence = [
 ];
 
 let currentLine = 0;
+let currentChar = 0;
 let terminalStarted = false;
+let cursorVisible = true;
+
+//offscreen 2d canvas bla bla part
+const textCanvas = document.createElement('canvas');
+textCanvas.width = 1024;
+textCanvas.height = 576;
+const tCtx = textCanvas.getContext('2d');
+
+
+//getting colors from css classes
+function getCssColor(className, fallback) {
+    const temp = document.createElement('span');
+    if (className) temp.className = className;
+    terminalScreen.appendChild(temp);
+    const col = getComputedStyle(temp).color || fallback;
+    terminalScreen.removeChild(temp);
+    return col;
+}
+
+const COLOR_MAP = {
+    default: getCssColor('', '#4af626'),
+    'term-dim': getCssColor('term-dim', '#ffae34'),
+    'term-sys': getCssColor('term-sys', '#26b9f6'),
+    'term-err': getCssColor('term-err', '#f62626')
+};
+
+
 
 //typewriter efffect function
 function typeTerminal() {

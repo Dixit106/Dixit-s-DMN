@@ -361,79 +361,32 @@ body::before {
 /*curved monitor look*/
 .crt-monitor {
     width: 100%;
-    max-width: 900px;
-    height: 500px;
-    background: #0a0a0a;
-    border-radius: 32px;
+    max-width: 960px;
+    height: 540px;
+    background: #030804;
+    border-radius: 28px;
     position: relative;
     overflow: hidden;
-    padding: 32px;
     box-shadow:
-        0 0 0 12px #111,
-        0 20px 50px rgba(0,0,0,0.9),
-        inset 0 0 20px rgba(0,0,0,1);
-    transform: perspective(800px) rotateX(2deg);
+        0 0 0 10px #111,
+        0 25px 60px rgba(0,0,0,0.9),
+        inset 0 0 30px rgba(0,0,0,1);
 }
 
-/*glass refelection and vigentee effect */
-.crt-glass {
+#crt-webgl-canvas {
     position: absolute;
     inset: 0;
-    pointer-events: none;
-    z-index: 10;
-    border-radius: 24px;
-    background: radial-gradient(circle at 50% 50%, transparent 40%, rgba(0,0,0,0.8) 100%);
-    box-shadow: inset 0 0 40px rgba(255, 255, 255, 0.03);
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 
-.crt-scanlines {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 9;
-    background: linear-gradient(
-        to bottom,
-        rgba(255,255,255,0),
-        rgba(255,255,255,0) 50%,
-        rgba(0,0,0,0.15) 50%,
-        rgba(0,0,0,0.15)
-    );
-    background-size: 100% 4px;
-    opacity: 0.6;
-}
 
 .terminal-screen {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.1rem;
+    font-family: 'VT323','Courier New', Courier, monospace;
     color: #4af626;
-    line-height: 1.5;
-    text-shadow: 0 0 8px rgba(74, 246, 38, 0.6);
-    white-space: pre-wrap;
-    animation: textFlicker 0.15s infinite;
 }
 
-.terminal-cursor {
-    display: inline-block;
-    width: 10px;
-    height: 1.2em;
-    background: #4af626;
-    vertical-align: middle;
-    animation: cursorBlink 1s step-end infinite;
-    box-shadow: 0 0 8px rgba(74, 246, 38, 0.8);
-}
-
-@keyframes cursorBlink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-@keyframes textFlicker {
-    0% { opacity: 0.95; }
-    50% { opacity: 1; }
-    100% { opacity: 0.92; }
-}
-
-/* color variations fo r output*/
-.term-dim { color: #2a8a16; text-shadow: none; }
-.term-err { color: #f62626; text-shadow: 0 0 8px rgba(246, 38, 38, 0.6); }
-.term-sys { color: #26b9f6; text-shadow: 0 0 8px rgba(38, 185, 246, 0.6); }
+.term-dim { color: #ffae34; }
+.term-err { color: #f62626; }
+.term-sys { color: #26b9f6; }
